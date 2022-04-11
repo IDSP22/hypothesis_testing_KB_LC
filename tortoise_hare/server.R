@@ -36,7 +36,12 @@ shinyServer(function(input, output) {
             geom_histogram(alpha = 0.5, position = "identity")
     })
     
-    output$p_val <- renderPrint(t_test_output()$p.val)
+    output$t_stat <- renderPrint(round(t_test_output()$statistic, 2))
+    output$p_val <- renderPrint({
+        ifelse(t_test_output()$p.val < 0.05, 
+               paste0(round(t_test_output()$p.val, 2)),
+               paste0(round(t_test_output()$p.val, 2)))})
+    output$estimate <- renderPrint(t_test_output()$estimate)
 
 })
 

@@ -60,7 +60,9 @@ shinyUI(fluidPage(
         # Show a plot of the generated distribution
         mainPanel(
             plotOutput("distPlot"),
-            uiOutput("p_val")
+            uiOutput("t_stat"),
+            uiOutput("p_val"),
+            uiOutput("estimate")
         )
     )
 ))
